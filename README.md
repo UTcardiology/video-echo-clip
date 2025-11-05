@@ -4,6 +4,9 @@ NeurIPS 2025 Workshop on Learning from Time Series for Health (TS4H)
 
 📄 **Preprint:** [arxiv.org/abs/2504.18800](https://arxiv.org/abs/2504.18800)
 
+<img width="1657" height="701" alt="Screenshot from 2025-11-05 23-17-04" src="https://github.com/user-attachments/assets/508b5d5d-bc04-41fe-8d29-420ce74fc963" />
+
+
 ## Installation
 
 We recommend using a virtual environment (e.g. `venv` or `conda`) to avoid package conflicts.
@@ -56,6 +59,26 @@ Key files and directories:
   Sample Japanese report texts corresponding to the example videos.
 
 
+## Pretrained Models
+
+We provide pretrained model weights for different video encoder backbones.  
+You can download the `.pt` files from the table below and place them under the `weights/` directory.
+
+| Model Name | Pretraining Source | Description | Download |
+|---|---|---|---|
+| `videomae2` | VideoMAE v2 pretrained | VideoMAE2 encoder further fine-tuned on multi-view echocardiography. | **TBD** |
+| `vivit-kinetics400` | ViViT pretrained on Kinetics-400 | ViViT encoder initialized from K400 weights and further fine-tuned. | **TBD** |
+| `vivit-scratch` | None (from scratch) | ViViT variant trained **from scratch** on multi-view echocardiography. | **TBD** |
+
+---
+
+### How to Use Pretrained Weights
+Place downloaded `.pt` weight files under the `weights/` directory:
+```bash
+mkdir -p weights
+mv <downloaded>.pt ./weights/
+```
+
 
 ## Training
 Before training, edit **`config/config.yaml`** to:
@@ -86,8 +109,7 @@ If you use this repository or the associated model in your research, please cite
   author    = {Takizawa, Ryo and Kodera, Satoshi and Kabayama, Tempei and 
                Matsuoka, Ryo and Ando, Yuta and Nakamura, Yuto and 
                Settai, Haruki and Takeda, Norihiko},
-  booktitle = {NeurIPS 2025 Workshop on Theory and Practice of Safe and Secure AI for Health (TS4H)},
-  year      = {2025},
-  journal   = {arXiv preprint arXiv:2504.18800}
+  booktitle = {NeurIPS 2025 Workshop TS4H},
+  year      = {2025}
 }
 ```
