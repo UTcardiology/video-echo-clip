@@ -1,0 +1,19 @@
+# @package _global_
+
+model:
+  embed_dim: 512
+
+  vision:
+    name: vivit
+    pretrained: null # "google/vivit-b-16x2-kinetics400"
+    image_size: 224
+    num_frames: 16
+    tubelet_size: [2, 16, 16]
+    embed_dim: 768
+  
+  text:
+    hf_model_name: tohoku-nlp/bert-base-japanese-v3
+    hf_tokenizer_name: tohoku-nlp/bert-base-japanese-v3
+    hf_proj_type: mlp
+    hf_pooler_type: cls_last_hidden_state_pooler
+    context_length: 256

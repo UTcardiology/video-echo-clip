@@ -1,0 +1,19 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch==2.3.1
+transformers==4.41.0
+pandas==2.2.3
+numpy==1.26.4
+pydicom==2.4.4
+opencv-python-headless==4.9.0.80
+webdataset==0.2.100
+wandb==0.18.5
+matplotlib==3.9.0
+hydra-core==1.3.2
+open_clip_torch==2.24.0
+tqdm==4.66.4
+Pillow==10.3.0
+fugashi==1.4.0
+ipadic==1.0.0
+unidic_lite==1.0.8
+av==14.2.0
+easydict==1.13

@@ -1,0 +1,95 @@
+project: video-echo-clip
+
+name: null
+checkpoint_epoch: null
+
+seed: 0
+
+distributed: ???
+
+resume: false
+
+device: ???
+rank: ???
+local_rank: ???
+world_size: ???
+
+workers: 8
+
+# Model
+defaults:
+ - model: videomae
+
+# Dataset
+dataset_type: webdataset
+
+train_data: /mnt/SynoNAS/echo/echoclip/video/train_shards_fixed/shards-{00000..16532}.tar
+val_data: /mnt/SynoNAS/echo/echoclip/video/val_shards_fixed/shards-{00000..00468}.tar
+# train_data: /mnt/SynoNAS/echo/echoclip/train.csv
+# val_data: /mnt/SynoNAS/echo/echoclip/val.csv
+
+train_num_samples: null 
+val_num_samples: null 
+
+train_sz: ???
+val_sz: ???
+
+image_mean: [0.0878, 0.0873, 0.0932] # [0.1086, 0.1086, 0.1086]
+image_std: [0.1510, 0.1492, 0.1570] # [0.1760, 0.1760, 0.1760]
+# image_mean: [0.48145466, 0.4578275, 0.40821073] # mean used in EchoCLIP
+# image_std: [0.26862954, 0.26130258, 0.27577711] # std used in EchoCLIP
+
+# train
+batch_size: 16
+precision: amp
+epochs: 10
+accum_freq: 1
+grad_clip_norm: null
+torchcompile: false
+val_frequency: 1
+
+siglip: false
+
+local_loss: false
+gather_with_grad: false
+
+pretrained: null
+lock_text: false
+lock_text_unlocked_layers: 0
+lock_text_freeze_layer_norm: false
+
+# ddp model
+ddp_static_graph: false
+
+# optimizer
+lr: 1e-5
+wd: 0.1
+beta1: 0.9
+beta2: 0.999
+eps: 1e-08
+
+# schedular
+skip_scheduler: false
+lr_scheduler: cosine
+warmup: 2000
+epochs_cooldown: null
+lr_cooldown_power: 1.0
+lr_cooldown_end: 0.0
+
+# log
+log_level: 20
+log_local: false
+logs: ./logs/
+debug: false
+log_every_n_steps: 1
+
+save_frequency: 1
+save_most_recent: false
+delete_previous_checkpoint: false
+
+save_checkpoints: ??? # save checkpoints only in master
+
+log_path: ???
+checkpoint_path: ???
+
+wandb: true

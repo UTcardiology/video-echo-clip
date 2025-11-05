@@ -1,0 +1,17 @@
+# @package _global_
+
+model:
+  embed_dim: 512
+
+  vision:
+    name: videomae
+    pretrained: "OpenGVLab/VideoMAEv2-Base"
+    image_size: 224
+    num_frames: 16
+
+  text:
+    hf_model_name: tohoku-nlp/bert-base-japanese-v3
+    hf_tokenizer_name: tohoku-nlp/bert-base-japanese-v3
+    hf_proj_type: mlp
+    hf_pooler_type: cls_last_hidden_state_pooler
+    context_length: 256
