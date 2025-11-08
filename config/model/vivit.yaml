@@ -5,9 +5,9 @@ model:
 
   vision:
     name: vivit
-    pretrained: null # "google/vivit-b-16x2-kinetics400"
+    pretrained: null  # "google/vivit-b-16x2-kinetics400"
     image_size: 224
-    num_frames: 16
+    num_frames: 16  # change to 32 when using `vivit-kinetics400` or pretrained is true
     tubelet_size: [2, 16, 16]
     embed_dim: 768
   

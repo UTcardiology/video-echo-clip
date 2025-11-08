@@ -71,7 +71,6 @@ def _build_csv_dataset(args, preprocess_fn, is_train, epoch=0, tokenizer=None):
     dataset = CsvDataset(
         input_filename,
         preprocess_fn,
-        sep=args.csv_separator,
         tokenizer=tokenizer,
         num_frames=args.model.vision.num_frames,
     )
@@ -108,7 +107,7 @@ class CsvDataset(Dataset):
         df = df[(df["view_prob"] > 0.9) & (df["view_label"] != "Other")]  # NOTE training with multi-view
 
         self.dicom_path = df["dicom_path"]
-        self.report_text = df["free_comment1_mod_long"]
+        self.report_text = df["report_text"]
         self.view_label = df["view_label"]
         self.view_prob = df["view_prob"]
 
@@ -132,9 +131,7 @@ class CsvDataset(Dataset):
 
         if len(rgb_frames) < self.num_frames:
             # frames is shorter than num_frames
-            rgb_frames = np.concatenate(
-                [rgb_frames, np.array([rgb_frames[-1] for _ in range(self.num_frames - len(rgb_frames))])], axis=0
-            )  # (N, H, W, 3)
+            rgb_frames = np.concatenate([rgb_frames, np.array([rgb_frames[-1] for _ in range(self.num_frames - len(rgb_frames))])], axis=0)  # (N, H, W, 3)
 
         # report texts preprocess
         report_text_list = self.report_text.iloc[idx].split(",")

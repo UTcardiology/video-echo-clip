@@ -18,15 +18,15 @@ workers: 8
 
 # Model
 defaults:
- - model: videomae
+ - model: videomae # vivit or videomae
 
 # Dataset
-dataset_type: webdataset
+dataset_type: csv  # csv or webdataset
 
-train_data: /mnt/SynoNAS/echo/echoclip/video/train_shards_fixed/shards-{00000..16532}.tar
-val_data: /mnt/SynoNAS/echo/echoclip/video/val_shards_fixed/shards-{00000..00468}.tar
-# train_data: /mnt/SynoNAS/echo/echoclip/train.csv
-# val_data: /mnt/SynoNAS/echo/echoclip/val.csv
+# train_data: /path/to/train_shards/shards-{00000..16532}.tar
+# val_data: /path/to/val_shards/shards-{00000..00468}.tar
+train_data: /path/to/train.csv
+val_data: /path/to/val.csv
 
 train_num_samples: null 
 val_num_samples: null 
@@ -34,10 +34,8 @@ val_num_samples: null
 train_sz: ???
 val_sz: ???
 
-image_mean: [0.0878, 0.0873, 0.0932] # [0.1086, 0.1086, 0.1086]
-image_std: [0.1510, 0.1492, 0.1570] # [0.1760, 0.1760, 0.1760]
-# image_mean: [0.48145466, 0.4578275, 0.40821073] # mean used in EchoCLIP
-# image_std: [0.26862954, 0.26130258, 0.27577711] # std used in EchoCLIP
+image_mean: [0.0878, 0.0873, 0.0932]
+image_std: [0.1510, 0.1492, 0.1570]
 
 # train
 batch_size: 16
@@ -87,7 +85,7 @@ save_frequency: 1
 save_most_recent: false
 delete_previous_checkpoint: false
 
-save_checkpoints: ??? # save checkpoints only in master
+save_checkpoints: ???
 
 log_path: ???
 checkpoint_path: ???
