@@ -1,5 +1,5 @@
 # Video CLIP Model for Multi-View Echocardiography Interpretation
-#### Ryo Takizawa, Satoshi Kodera, Tempei Kabayama, Ryo Matsuoka, Yuta Ando, Yuto Nakamura, Haruki Settai, Norihiko Takeda
+#### [Ryo Takizawa](https://crumbyrobotics.github.io), Satoshi Kodera, Tempei Kabayama, Ryo Matsuoka, Yuta Ando, Yuto Nakamura, Haruki Settai, Norihiko Takeda
 NeurIPS 2025 Workshop on Learning from Time Series for Health (TS4H)
 
 📄 **Preprint:** [arxiv.org/abs/2504.18800](https://arxiv.org/abs/2504.18800)
@@ -58,17 +58,21 @@ Key files and directories:
 * **`example1.txt`, `example2.txt`**
   Sample Japanese report texts corresponding to the example videos.
 
+* **`example_dataset.csv`** 
+  Example dataset in CSV format.
+
+* **`csv2wds.py`** 
+  Utility script for converting the dataset from CSV format to WebDataset format.
 
 ## Pretrained Models
 
-We provide pretrained model weights for different video encoder backbones.  
-You can download the `.pt` files from the table below and place them under the `weights/` directory.
+We provide pretrained model weights for different video encoder backbones on [Hugging Face](https://huggingface.co/r-takizawa/).
 
 | Model Name | Pretraining Source | Description | Download |
 |---|---|---|---|
-| `videomae2` | VideoMAE v2 pretrained | VideoMAE2 encoder further fine-tuned on multi-view echocardiography. | **TBD** |
-| `vivit-kinetics400` | ViViT pretrained on Kinetics-400 | ViViT encoder initialized from K400 weights and further fine-tuned. | **TBD** |
-| `vivit-scratch` | None (from scratch) | ViViT variant trained **from scratch** on multi-view echocardiography. | **TBD** |
+| `videomae2` | VideoMAE v2 pretrained | VideoMAE2 encoder further fine-tuned on multi-view echocardiography. | **[checkpoint](https://huggingface.co/r-takizawa/VideoEchoCLIP-videomae2/resolve/main/checkpoint_videomae2.pt?download=true)** |
+| `vivit-kinetics400` | ViViT pretrained on Kinetics-400 | ViViT encoder initialized from Kinetics-400 weights and further fine-tuned. | **[checkpoint](https://huggingface.co/r-takizawa/VideoEchoCLIP-vivit-kinetics400/resolve/main/checkpoint_vivit-kinetics400.pt?download=true)** |
+| `vivit-scratch` | None (from scratch) | ViViT variant trained **from scratch** on multi-view echocardiography. | **[checkpoint](https://huggingface.co/r-takizawa/VideoEchoCLIP-vivit-scratch/resolve/main/checkpoint_vivit-scratch.pt?download=true)** |
 
 ---
 
@@ -96,8 +100,11 @@ Run the training script as:
 python run_train.py
 ```
 
-To use distributed training (e.g. DDP), launch with your preferred launcher (such as `torchrun`) and ensure all relevant options in `config/config.yaml` are set correctly.
+To use distributed training (e.g. DDP), launch with your preferred launcher (such as `torchrun`).
 
+```bash
+torchrun --nproc_per_node=4 -m run_train
+```
 
 ## Citation
 
