@@ -1,6 +1,8 @@
 # Video CLIP Model for Multi-View Echocardiography Interpretation
 #### [Ryo Takizawa](https://crumbyrobotics.github.io), Satoshi Kodera, Tempei Kabayama, Ryo Matsuoka, Yuta Ando, Yuto Nakamura, Haruki Settai, Norihiko Takeda
-NeurIPS 2025 Workshop on Learning from Time Series for Health (TS4H)
+The University of Tokyo Hospital; The University of Tokyo
+
+**NeurIPS 2025 Workshop on Learning from Time Series for Health (TS4H)**
 
 📄 **Preprint:** [arxiv.org/abs/2504.18800](https://arxiv.org/abs/2504.18800)
 
